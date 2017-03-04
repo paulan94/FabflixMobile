@@ -108,7 +108,6 @@ public class LoginActivity extends ActionBarActivity implements LoaderCallbacks<
         });
 
         mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
@@ -120,7 +119,7 @@ public class LoginActivity extends ActionBarActivity implements LoaderCallbacks<
                 .getDefaultSharedPreferences(this);
 
         mEmailView.setText(sharedPreferences.getString("email",""));
-        mPasswordView.setText(sharedPreferences.getString("email",""));
+        mPasswordView.setText(sharedPreferences.getString("password",""));
 
     }
     //saves using key value pair called in savedata

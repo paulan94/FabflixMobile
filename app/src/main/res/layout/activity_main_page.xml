@@ -1,16 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="edu.uci.ics.fabflixmobile.MainPageActivity">
+    tools:context="edu.uci.ics.fabflixmobile.MainPageActivity"
+    android:background="@color/Black">
 
-    <android.support.v7.widget.SearchView
-        android:id="@+id/searchview"
+    <ImageView
+        android:id="@+id/fabflix_logo"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="25dp"
+        android:src="@mipmap/febflex"/>
+
+    <TextView
+        android:id="@+id/welcome_tv"
+        android:textColor="@color/Red"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:text="welcome message here maybe?"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/fabflix_logo"
+        android:layout_alignBottom="@+id/fabflix_logo"
+        android:layout_alignTop="@+id/fabflix_logo">
 
-    </android.support.v7.widget.SearchView>
+    </TextView>
 
-</LinearLayout>
+    <ListView
+        android:id="@+id/movie_listview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fabflix_logo"
+        android:background="@color/Red"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_above="@+id/search_view">
+
+
+    </ListView>
+
+    <EditText
+        android:id="@+id/search_view"
+        android:background="@color/Red"
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        android:padding="10dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/movie_search"
+        android:layout_alignParentBottom="true">
+
+    </EditText>
+    <!--this is going to be the searchbutton-->
+    <ImageButton
+        android:id="@+id/search_button"
+        android:src="@mipmap/ic_search_white_36dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/Red"
+        android:layout_margin="20dp"
+        android:layout_below="@id/movie_listview"
+        android:layout_alignParentRight="true"
+
+        />
+
+</RelativeLayout>

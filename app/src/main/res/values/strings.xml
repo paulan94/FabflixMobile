@@ -20,6 +20,22 @@
         completions."
     </string>
 
+    update this for movie title list
+    <string-array name="movie_titles">
+        <item>Star Wars</item>
+        <item>Shart Boy and Lava Girl</item>
+        <item>Some movie name 2</item>
+        <item>Star Wars</item>
+        <item>Shart Boydfd and Lava Girl</item>
+        <item>Some movie name 2</item>
+        <item>Star Wdfdars</item>
+        <item>Shart sdsBoy and Lava Girl</item>
+        <item>Some movie name 2</item>
+        <item>Star Warfgfs</item>
+        <item>Shart Boy and Lava Girl</item>
+        <item>Some ddmovie name 2</item>
+    </string-array>
+
 
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
@@ -165,5 +181,6 @@
     <color name="Navy">#000080</color>
     <color name="Black">#000000</color>
     <string name="title_activity_main_page">MainPageActivity</string>
+    <string name="movie_search">Search for Movie here</string>
 
 </resources>
