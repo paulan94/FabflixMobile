@@ -1,14 +1,19 @@
 package edu.uci.ics.fabflixmobile;
 
+import android.animation.LayoutTransition;
 import android.content.Context;
+import android.graphics.Typeface;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +43,8 @@ public class MainPageActivity extends ActionBarActivity {
     private ListView mListView;
     private Context mContext;
     private Singleton mSingleton;
+    private RelativeLayout mRelativeLayout;
+    private ViewGroup viewGroup;
 
     String inc_url = "";
 
@@ -56,6 +63,10 @@ public class MainPageActivity extends ActionBarActivity {
         mButton = (ImageButton)findViewById(R.id.search_button);
 
 
+        Typeface league_gothic = Typeface.createFromAsset(this.getAssets(), "fonts/league-gothic.regular.ttf");
+
+        mWelcomeTextView.setTypeface(league_gothic);
+
 
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,16 +77,12 @@ public class MainPageActivity extends ActionBarActivity {
                     mListView.clearChoices();
                     connectToTomcatSearch();
                 } catch (UnsupportedEncodingException e) {
-
                     e.printStackTrace();
                 }
-
             }
         });
 
         //need to move this so it updates when user searches. SHOULD NOT BE IN ONCREATE
-        ArrayAdapter<CharSequence> aa = ArrayAdapter.createFromResource(this, R.array.movie_titles, android.R.layout.simple_list_item_1);
-        mListView.setAdapter(aa);
 
         //show welcome
         Bundle bundle = getIntent().getExtras();
@@ -97,6 +104,7 @@ public class MainPageActivity extends ActionBarActivity {
                         int index = 0;
                         Log.d("responsetomcat", response);
                         if (response.contains("title submitLink")) {
+                            mListView.setVisibility(View.VISIBLE);
                             // TODO: grab data first before incrementing index
                             inc_url += response;
                             //while response.contains titlesubmit link, increment i by 1, new function that gets new url and returns
@@ -115,6 +123,30 @@ public class MainPageActivity extends ActionBarActivity {
                             ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(MainPageActivity.this,
                                     android.R.layout.simple_list_item_1, movieTitles);
                             mListView.setAdapter(itemsAdapter);
+
+                            //make toast for num results found
+                            int num_items = movieTitles.size();
+                            Context context = getApplicationContext();
+                            int duration = Toast.LENGTH_SHORT;
+                            if (num_items == 1){
+                                CharSequence text = num_items + " result was found!";
+                                Toast toast = Toast.makeText(context, text, duration);
+                                toast.show();
+                            }
+                            else{
+                                CharSequence text = num_items + " results were found!";
+                                Toast toast = Toast.makeText(context, text, duration);
+                                toast.show();
+                            }
+                        }
+                        else{
+
+                            //if inc_url is a certain length, hide listview, toast saying no results found.
+                            mListView.setVisibility(View.INVISIBLE);
+                            Context context = getApplicationContext();
+                            CharSequence text = url_string + " was not found in the database.";
+                            Toast toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
+                            toast.show();
                         }
                     }
                 },

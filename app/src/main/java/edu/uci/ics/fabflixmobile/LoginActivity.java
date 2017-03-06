@@ -12,14 +12,18 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -44,7 +48,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+import info.hoang8f.widget.FButton;
 
 
 /**
@@ -80,6 +84,8 @@ public class LoginActivity extends ActionBarActivity implements LoaderCallbacks<
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
         // Set up the login form.
 
 
@@ -165,6 +171,10 @@ public class LoginActivity extends ActionBarActivity implements LoaderCallbacks<
         //use to login
         final String login_uname = mEmailView.getText().toString();
         final String login_password = mPasswordView.getText().toString();
+
+        final Animation zoom_in = AnimationUtils.loadAnimation(this, R.anim.zoom_in);
+        final Animation zoom_out = AnimationUtils.loadAnimation(this, R.anim.zoom_out);
+
 
         params.put("email", login_uname);
         params.put("password", login_password);

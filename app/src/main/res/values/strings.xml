@@ -182,5 +182,6 @@
     <color name="Black">#000000</color>
     <string name="title_activity_main_page">MainPageActivity</string>
     <string name="movie_search">Search for Movie here</string>
+    <string name="welcome_message">Welcome to FabFlix!</string>
 
 </resources>
