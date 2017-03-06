@@ -69,6 +69,7 @@ public class LoginActivity extends ActionBarActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private Singleton mSingleton;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -156,10 +157,10 @@ public class LoginActivity extends ActionBarActivity implements LoaderCallbacks<
         final Map<String, String> params = new HashMap<String, String>();
 
         // no user is logged in, so we must connect to the server
-        RequestQueue queue = Volley.newRequestQueue(this);
+        RequestQueue queue = Singleton.getInstance(this.getApplicationContext()).getRequestQueue();
 
 //        final Context context = this;
-        String url = "http://52.25.32.130:8080/TomcatForm/servlet/TomcatForm";
+        String url = "http://52.25.32.130:8080/Fabflix/servlet/TomcatForm";
 
         //use to login
         final String login_uname = mEmailView.getText().toString();
@@ -221,7 +222,7 @@ public class LoginActivity extends ActionBarActivity implements LoaderCallbacks<
 
         Log.d("post request: ", postRequest.toString());
         Log.d("queue: ", queue.toString());
-        queue.add(postRequest);
+        mSingleton.getInstance(this).addToRequestQueue(postRequest);
 
         return;
     }

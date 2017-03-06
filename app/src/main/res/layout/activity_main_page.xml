@@ -60,7 +60,9 @@
         android:background="@color/Red"
         android:layout_margin="20dp"
         android:layout_below="@id/movie_listview"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentRight="true">
+
+    </ImageButton>
 
         />
 

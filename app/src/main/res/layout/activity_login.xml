@@ -87,6 +87,7 @@
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:layout_below="@id/password"
+                android:onClick="connectToTomcat"
                 />
 
 
