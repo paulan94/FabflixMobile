@@ -2,6 +2,7 @@ package edu.uci.ics.fabflixmobile;
 
 import android.animation.LayoutTransition;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -53,6 +54,7 @@ public class MainPageActivity extends ActionBarActivity {
 
         super.onCreate(savedInstanceState);
 
+        setRequestedOrientation (ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main_page);
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -107,18 +109,7 @@ public class MainPageActivity extends ActionBarActivity {
                             mListView.setVisibility(View.VISIBLE);
                             // TODO: grab data first before incrementing index
                             inc_url += response;
-                            //while response.contains titlesubmit link, increment i by 1, new function that gets new url and returns
-                            //increment index by 1, do another getrequest for next page.
-//                            incrementConnect(index, url_string, new VolleyCallback(){
-//                                @Override
-//                                public void onSuccess(String result) {
-//                                    //check result
-//                                    Log.d("resultsuccess", inc_url);
-//
-//                                }
-//                            });
 
-                            //TODO: combine all arrays and use this to show in ListView
                             List<String> movieTitles = getMovieTitles(inc_url);
                             ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(MainPageActivity.this,
                                     android.R.layout.simple_list_item_1, movieTitles);
