@@ -159,41 +159,6 @@ public class MainPageActivity extends ActionBarActivity {
 
 
     }
-//    public void incrementConnect(int index, String url_string, final VolleyCallback volleyCallback){
-//
-//        String url = "http://52.25.32.130:8080/Fabflix/servlet/Pagination?query=SELECT+*+FROM+movies+as+m+WHERE+m.title+LIKE+%27%25" +
-//                url_string + "%25%27&pageIndex="+ index + "&limitValue=100&NextPrev=Next";
-//
-//        StringRequest getRequest = new StringRequest(Request.Method.GET, url,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        Log.d("responseinctomcat", response);
-//                        inc_url += response;
-////                        result = response;
-//                        volleyCallback.onSuccess(inc_url);
-//                        //add to arraylist
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Log.d("abd", "Error: " + error
-//                                + "\n>>" + error.networkResponse.statusCode
-//                                + "\n>>" + error.networkResponse.data
-//                                + "\n>>" + error.getCause()
-//                                + "\n>>" + error.getMessage());
-//                        // Handle error
-//                    }
-//                });
-//
-//// add it to the RequestQueue
-//        Log.d("get request: ", getRequest.toString());
-//
-//        mSingleton.getInstance(this).addToRequestQueue(getRequest);
-//
-//        return;
-//    }
 
     //TODO: add these into strings.xml file or pull data to show onto listview.
     public List<String> getMovieTitles(String http_response) {
